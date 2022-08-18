@@ -35,19 +35,19 @@ module.exports.seed = async (log = true) => {
 };
 
 module.exports.seedSQL = async (log = true) => {
-  Array.from(Array(100).keys()).map(async () => {
+  for (let i = 0; i < 100; i++) {
     con.query(
       `INSERT INTO user (name) VALUES( '${faker.lorem.sentence()}')`,
       function (err, result) {
         if (err) throw err;
         console.log(result.insertId);
-        Array.from(Array(2).keys()).map(async () => {
+        for (let j = 0; j < 2; j++) {
           con.query(`INSERT INTO post (title,description,userId)
-            VALUES ('${faker.lorem.sentence()}','${faker.lorem.paragraph(
+                  VALUES ('${faker.lorem.sentence()}','${faker.lorem.paragraph(
             10
           )}',${result.insertId})`);
-        });
+        }
       }
     );
-  });
+  }
 };
