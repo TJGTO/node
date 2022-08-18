@@ -35,12 +35,7 @@ module.exports.seed = async (log = true) => {
 };
 
 module.exports.seedSQL = async (log = true) => {
-  //   if (log) {
-  //     console.log(chalk.green("Connected to database..."));
-  //     console.log(chalk.green("Seeder started..."));
-  //   }
-
-  Array.from(Array(95).keys()).map(async () => {
+  Array.from(Array(100).keys()).map(async () => {
     con.query(
       `INSERT INTO user (name) VALUES( '${faker.lorem.sentence()}')`,
       function (err, result) {
@@ -55,6 +50,4 @@ module.exports.seedSQL = async (log = true) => {
       }
     );
   });
-
-  //   if (log) console.log(chalk.green("Seeder completed... Exiting..."));
 };
