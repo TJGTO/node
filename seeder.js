@@ -1,8 +1,11 @@
-const { seed } = require('./src/helpers/seeder.helper');
-const { connect } = require('./src/helpers/db.helper');
+const { seed, seedSQL } = require("./src/helpers/seeder.helper");
+const { connect } = require("./src/helpers/db.helper");
+const { con } = require("./src/connection");
 
-connect().then(async () => {
-    await seed();
-    process.exit(0);
+// connect().then(async () => {
+//   await seedSQL();
+//   process.exit(0);
+// });
+con.connect(function (err) {
+  seedSQL();
 });
-
